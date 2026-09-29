@@ -1,0 +1,32 @@
+CC := gcc
+SRCDIR := src
+BUILDDIR := build
+INSTALLDIR := /usr/local/bin
+BINDIR := bin
+CFLAGS := -Wall -Wextra -Wshadow -Werror -Wpedantic -fsanitize=address,undefined -std=c11 -Iinclude -Og -g
+TARGET := $(BINDIR)/ceval
+SRCEXT := c
+
+SOURCES := $(wildcard $(SRCDIR)/*.$(SRCEXT)) $(wildcard $(SRCDIR)/**/*.$(SRCEXT))
+OBJECTS := $(patsubst $(SRCDIR)/%.c,$(BUILDDIR)/%.o,$(SOURCES))
+INC := -I include
+
+all: $(TARGET)
+
+$(TARGET): $(OBJECTS) | $(BINDIR)
+	$(CC) $(CFLAGS) $(OBJECTS) -o $(TARGET)
+
+$(BUILDDIR)/%.o: $(SRCDIR)/%.c | $(BUILDDIR)
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) $(INC) -c $< -o $@
+
+$(BUILDDIR):
+	@mkdir -p $(BUILDDIR)
+
+$(BINDIR):
+	@mkdir -p $(BINDIR)
+
+clean:
+	rm -rf $(BUILDDIR) $(BINDIR)
+
+PHONY: all clean

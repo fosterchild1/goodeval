@@ -1,6 +1,13 @@
 #pragma once
 
+#include <Utils/array.h>
+
 typedef enum {
+    ERR,
+
+    // values
+    NUM, IDENTIFIER,
+
     // operators
     ADD, SUB, MUL, DIV, EXP,
 
@@ -12,3 +19,5 @@ typedef struct {
     char* value;
     TOKEN_TYPE token;
 } Token;
+
+Array ParseString(const char* str);

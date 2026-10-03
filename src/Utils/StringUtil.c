@@ -1,6 +1,7 @@
 #include <string.h>
-#include <Utils/array.h>
-#include <Utils/Util.h>
+#include "Utils/array.h"
+#include "Utils/Util.h"
+
 char* CharToString(char ch) {
     char* str = xmalloc(2);
     str[0] = ch; str[1] = '\0';

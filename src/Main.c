@@ -1,5 +1,5 @@
-#include <CLI.h>
-#include <Lexer.h>
+#include "CLI.h"
+#include "Lexer.h"
 
 int main(int argc, char** argv) {
     ParseCLI(argc, argv);

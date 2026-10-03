@@ -1,9 +1,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <Lexer.h>
-#include <Utils/array.h>
-#include <Utils/StringUtil.h>
+#include "Lexer.h"
+#include "Utils/array.h"
+#include "Utils/StringUtil.h"
 
 char* GetFullNumber(const char* str, int startIdx) {
     const char* p = str + startIdx;
@@ -15,7 +15,6 @@ char* GetFullNumber(const char* str, int startIdx) {
     p--;
 
     int endIdx = p - str;
-    printf("%d, %d\n", startIdx, endIdx);
     return String_Sub(str, startIdx, endIdx);
 }
 
@@ -60,7 +59,7 @@ Array ParseString(const char* str) {
         
         Token parsedToken = StrToToken(str, currIdx);
         if (parsedToken.token == ERR) exit(EXIT_FAILURE);
-        printf("token val: %s, %d\n", parsedToken.value, parsedToken.token);
+        printf("%s", parsedToken.value);
         currIdx += strlen(parsedToken.value);
     }
 

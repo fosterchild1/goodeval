@@ -59,8 +59,9 @@ Array ParseString(const char* str) {
         
         Token parsedToken = StrToToken(str, currIdx);
         if (parsedToken.token == ERR) exit(EXIT_FAILURE);
-        printf("%s", parsedToken.value);
+        
         currIdx += strlen(parsedToken.value);
+        Array_Insert(&tokens, &parsedToken);
     }
 
     return tokens;

@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include "Parser.h"
 
 void* xmalloc(size_t size) {
     void* p = malloc(size);
@@ -8,3 +9,8 @@ void* xmalloc(size_t size) {
 
     return p;
 }
+
+
+void PrintExprNode(ExprNode node) {
+
+};

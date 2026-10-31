@@ -1,8 +1,10 @@
 #include "CLI.h"
 #include "Lexer.h"
+#include "Parser.h"
 
 int main(int argc, char** argv) {
     ParseCLI(argc, argv);
-    ParseString("3+1^2*(3-2/4)+3^70000000");
+    Array tokens = ParseString("3+1^2");
+    TokensToAST(tokens);
     return 1;
 }
